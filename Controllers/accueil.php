@@ -2,13 +2,15 @@
 
 if($_SESSION['auth']['level'] == 3)
 {
-     require "Models/accueil.php";
+    require "Models/accueil.php";
     include 'Core/tabsFormations.class.php';
 
     $_GET['p'] = 'accueil';
     $id_s = $_SESSION['auth']['id_s'];
 
-    $form = getFormation($id_s);
+    $Form = getAllFormation($id_s);
+    $FormAtt =  getFormationAttente($id_s);
+    $FormHisto = getHistorique($id_s);
 
     if(isset($_POST['Suivre']))
     {
@@ -18,6 +20,7 @@ if($_SESSION['auth']['level'] == 3)
 
         header("Location:".BASE_URL."/accueil");
     }
+  
     require "Views/accueil.php";
 }
 else

@@ -12,6 +12,7 @@ function getAllFormation($id){
     }
 }
 
+//obtenur les formations en attente
 function getFormationAttente($id)
 {
     global $bdd;
@@ -24,6 +25,7 @@ function getFormationAttente($id)
 	}
 }
 
+//obtenir l'historique des formations
 function getHistorique($id)
 {
 	global $bdd;

@@ -4,15 +4,15 @@
 
             <div class="nav-tabs-custom">
             <ul class="nav nav-tabs pull-right">
-              <li><a href="#tab_1-1" data-toggle="tab">Historiques</a></li>
-              <li><a href="#tab_2-2" data-toggle="tab">Formations en attentes</a></li>
-              <li class="active"><a href="#tab_3-2" data-toggle="tab">Formations proposées</a></li>
+              <li><a href="#tab_histo" data-toggle="tab">Historiques</a></li>
+              <li><a href="#tab_attente" data-toggle="tab">Formations en attentes</a></li>
+              <li class="active"><a href="#tab_formations" data-toggle="tab">Formations proposées</a></li>
 
             </ul>
             <div class="tab-content">
-                <?= tabsFormations::Historic($FormHisto,"1-1","histo")?>
-                <?= tabsFormations::Waiting($FormAtt,"2-2","attente")?>
-                <?= tabsFormations::Offer($Form,"3-2","propose")?>
+                <?= tabsFormations::Historic($FormHisto,"histo","histo")?>
+                <?= tabsFormations::Waiting($FormAtt,"attente","attente")?>
+                <?= tabsFormations::Offer($Form,"formations","propose")?>
             </div>
             <!-- /.tab-content -->
           </div>

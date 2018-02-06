@@ -68,7 +68,7 @@ class tabsFormations
     {
         $tab = '<div class="tab-pane active" id="tab_'.$idtab.'">
                     <div class="table-responsive no-padding">
-                        <table id="'.$idtype.'" class="table table-hover">
+                        <table id="datatable" id="'.$idtype.'" class="table table-hover">
                             <thead>
                               <tr>
                                 <th id="Formations">Formations</th>
@@ -96,11 +96,11 @@ class tabsFormations
                                 <form method="post" action="' . BASE_URL . '/fiche">
                                 <input name="idForm" type="hidden" value="' . $value['id_f'] . '" >
                                 <td>
-                                   
+
                                 </td>
                             </form>';
                             $tab.='
-                        
+
                             <tr>
                                <td>' . $value["libelle"] . '</td>
                                <td>' . date('d-m-Y', strtotime($value['date_d'])) . ' - ' . date('d-m-Y', strtotime($value['date_f'])) . '</td>
@@ -121,9 +121,9 @@ class tabsFormations
                                                 <h4 class="modalContent">Coût : ' . $value['credits'] . ' Crédit(s)</h4>
                                                 <h4 class="modalContent">Adresse : ' . $value['numero'] . ' ' . $value['rue'] . ' ' . $value['commune'] . ' ' . $value['code_postale'] . '</h4>
                                                 <h4 class="modalContent">Description:' . $value['contenu'] . '</h4>
-                                                
+
                                             </div>
-                                        </div> 
+                                        </div>
                                     </div>
                                 </div>
                                </td>
@@ -175,9 +175,9 @@ class tabsFormations
                                                             <h4 class="modalContent">Durée : '.$value['NbJour'].' Jour(s)</h4>
                                                             <h4 class="modalContent">Coût : '.$value['credits'].' Crédit(s)</h4>
                                                             <h4 class="modalContent">Adresse : '.$value['numero'].' '.$value['rue'].' '.$value['commune'].' '.$value['code_postale'].'</h4>
-                                                            <h4 class="modalContent">Description:'.$value['contenu'].'</h4>  
+                                                            <h4 class="modalContent">Description:'.$value['contenu'].'</h4>
                                                         </div>
-                                                    </div> 
+                                                    </div>
                                                 </div>
                                             </div>
                                            </td>
@@ -186,7 +186,7 @@ class tabsFormations
                             }
                         }
                         $tab .= '</table>
-                    </div> 
+                    </div>
                 </div>';
         return $tab;
     }

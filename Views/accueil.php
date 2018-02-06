@@ -10,6 +10,7 @@
 
             </ul>
             <div class="tab-content">
+
                 <?= tabsFormations::Historic($FormHisto,"histo","histo")?>
                 <?= tabsFormations::Waiting($FormAtt,"attente","attente")?>
                 <?= tabsFormations::Offer($Form,"formations","propose")?>
@@ -22,7 +23,6 @@
 
 
 
-         
-       
-     <div class="clearfix"></div>
 
+
+     <div class="clearfix"></div>

@@ -37,5 +37,16 @@ function getHistorique($id)
 	}
 }
 
+function suivreForm($id_s,$id_f)
+{
+		global $bdd;
+        $etat = "En attente";
+        $req = $bdd->prepare('INSERT INTO suivre(etat,id_s,id_f) VALUES (:etat,:id_s,:id_f)');
+        $req->bindParam(':etat', $etat);
+        $req->bindParam(':id_s', $id_s);
+        $req->bindParam(':id_f', $id_f);
+        $req->execute();
+}
+
 
 ?>

@@ -2,7 +2,7 @@
 
 class statsAdmin
 {
-    public static function stats ($color, $nb, $title, $icon,$type)
+    public static function stats ($color, $nb, $title,$type)
     {
         $stats = '<div class="col-lg-3 col-md-4 col-sm-4">
                       <div class="small-box bg-'.$color.'">
@@ -11,7 +11,6 @@ class statsAdmin
                           <p>'.$title.'</p>
                         </div>
                         <div class="icon">
-                          <i class="ion ion-'.$icon.'"></i>
                         </div>
                         <a href="#" class="small-box-footer" data-toggle="modal" data-target="#'.$type.'">Voir tous <i class="fa fa-arrow-circle-right"></i></a>
                       </div>

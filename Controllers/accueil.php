@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 if($_SESSION['auth']['level'] == 3)
 {
@@ -9,9 +9,8 @@ if($_SESSION['auth']['level'] == 3)
     $id_s = $_SESSION['auth']['id_s'];
 
     $Form = getAllFormation($id_s);
-    $FormAtt =  getFormationAttente($id_s);
+    $FormAtt = getFormationAttente($id_s);
     $FormHisto = getHistorique($id_s);
-
 
     if(isset($_POST['Suivre']))
     {
@@ -21,7 +20,12 @@ if($_SESSION['auth']['level'] == 3)
 
         header("Location:".BASE_URL."/accueil");
     }
-
+    /*if(isset($_POST['Export']))
+    {
+        
+        var_dump($id_f);
+    }
+    */
     require "Views/accueil.php";
 }
 else

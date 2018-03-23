@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  mar. 16 jan. 2018 à 19:55
+-- Généré le :  ven. 23 mars 2018 à 08:37
 -- Version du serveur :  5.7.19
 -- Version de PHP :  7.0.23
 
@@ -36,14 +36,52 @@ CREATE TABLE IF NOT EXISTS `adresse` (
   `code_postale` varchar(25) DEFAULT NULL,
   `numero` int(3) NOT NULL,
   PRIMARY KEY (`id_a`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `adresse`
 --
 
 INSERT INTO `adresse` (`id_a`, `rue`, `commune`, `code_postale`, `numero`) VALUES
-(3, 'test', 'test', '75009', 12);
+(1, 'test', 'test', '75000', 1),
+(2, 'test', 'TESTTTT', '75342', 18),
+(3, 'test', 'Test', '75000', 11),
+(4, 'test', 'Test', '75000', 11),
+(5, 'test', 'Test', '75000', 11),
+(6, 'test', 'Test', '75000', 11),
+(7, 'test', 'Test', '75000', 11),
+(8, 'test', 'Test', '75000', 11),
+(9, 'test', 'Test', '75000', 11),
+(10, 'test', 'TesT', '75000', 11),
+(11, 'test', 'Test', '75000', 11),
+(12, 'test', 'Test', '75000', 11),
+(13, 'test', 'Test', '75000', 11),
+(14, 'test', 'Test', '75000', 11),
+(15, 'test', 'Test', '75000', 11),
+(16, 'test', 'Test', '75000', 11),
+(17, 'test', 'Test', '75000', 11),
+(18, 'test', 'Test', '75000', 11),
+(19, 'test', 'Test', '75000', 11),
+(20, 'test', 'Test', '75000', 11),
+(21, 'test', 'Test', '75000', 11),
+(22, 'test', 'Test', '75000', 11),
+(23, 'RUE5', 'PRESTATAUIRE5', '75000', 11),
+(24, 'RUE2', 'PRESTATAUIRE3', '75000', 11),
+(25, 'RUE4', 'PRESTATAUIRE4', '56789', 43),
+(26, 'RUE3', 'PRESTATAUIRE3', '45678', 543),
+(27, 'RUE1', 'PARIS', '75004', 20),
+(28, 'RUEE', 'PARIS', '75006', 22),
+(29, 'rue', 'ville', '75000', 5),
+(30, 'rue', 'paris', '75000', 10),
+(31, 'rue', 'ville', '90', 2),
+(32, 'rue', 'ville', '75000', 2),
+(33, '', '', '', 2),
+(34, 'FormaTest', 'FormaTest', '75000', 23),
+(35, 'FormaTest2', 'FormaTest2', '75000', 23),
+(36, 'RUE', 'VILLE', '75000', 1),
+(37, 'TEST', 'TEST', '75000', 3),
+(38, 'TEST', 'TEST11', '75000', 3),
+(39, 'TETST', 'TESTTT', '75000', 3);
 
 -- --------------------------------------------------------
 
@@ -65,7 +103,25 @@ CREATE TABLE IF NOT EXISTS `formation` (
   PRIMARY KEY (`id_f`),
   KEY `FK_formation_id_p` (`id_p`),
   KEY `FK_formation_id_a` (`id_a`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `formation`
+--
+
+INSERT INTO `formation` (`id_f`, `libelle`, `contenu`, `date_d`, `date_f`, `NbJour`, `credits`, `id_p`, `id_a`) VALUES
+(1, 'test1', 'blablabla', '2018-03-16', '2018-03-18', 2, 10, 1, 1),
+(2, 'test2', 'blablabla', '2018-04-06', '2018-04-08', 2, 10, 2, 2),
+(3, 'test3', 'blablabla', '2018-04-24', '2018-04-26', 2, 10, 3, 3),
+(4, 'test4', 'blablabla', '2018-04-27', '2018-05-02', 2, 10, 4, 4),
+(5, 'test5', 'blablabla', '2018-05-25', '2018-05-31', 2, 10, 5, 5),
+(6, 'html', 'css', '2018-04-06', '2018-04-10', 14, 70, 2, 27),
+(7, 'php', 'php', '2018-03-16', '2018-03-21', 5, 25, 2, 28),
+(8, 'js', 'js', '2018-03-11', '2018-03-13', 2, 10, 3, 29),
+(9, 'angularJS', 'angularJS', '2018-04-14', '2018-04-16', 2, 10, 2, 30),
+(10, 'testsport', 'test', '2018-03-07', '2018-03-10', 3, 15, 3, 32),
+(11, 'FormaTest', 'FormaTest', '2018-03-23', '2018-12-31', 3, 50, 1, 34),
+(12, 'FormaTest2', 'FormaTest2', '2018-03-23', '2018-12-31', 3, 50, 1, 35);
 
 -- --------------------------------------------------------
 
@@ -80,7 +136,18 @@ CREATE TABLE IF NOT EXISTS `prestataire` (
   `id_a` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_p`),
   KEY `FK_prestataire_id_a` (`id_a`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `prestataire`
+--
+
+INSERT INTO `prestataire` (`id_p`, `raison_s`, `id_a`) VALUES
+(1, 'Presta1', 23),
+(2, 'Presta2', 24),
+(3, 'presta3', 25),
+(4, 'presta4', 26),
+(5, 'presta5', 26);
 
 -- --------------------------------------------------------
 
@@ -105,7 +172,7 @@ CREATE TABLE IF NOT EXISTS `salarie` (
   PRIMARY KEY (`id_s`),
   KEY `FK_salarie_id_a` (`id_a`),
   KEY `FK_salarie_id_s_1` (`id_s_1`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `salarie`
@@ -114,7 +181,30 @@ CREATE TABLE IF NOT EXISTS `salarie` (
 INSERT INTO `salarie` (`id_s`, `nom`, `prenom`, `mail`, `password`, `NbJour`, `credits`, `level`, `id_a`, `id_s_1`, `erreur`, `date_fin_password`) VALUES
 (1, 'admin', 'admin', 'admin@admin.fr', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1, 999, 1, NULL, NULL, NULL, NULL),
 (2, 'chef', 'chef', 'chef@chef.fr', 'd5f2e5c77054c44c2c72a1b017deca06fc637c99', 1, 300, 2, NULL, NULL, 3, NULL),
-(3, 'user', 'user', 'user@user.fr', '12dea96fec20593566ab75692c9949596833adc9', 10, 40, 3, 3, 2, 3, NULL);
+(3, 'user', 'user', 'user@user.fr', '12dea96fec20593566ab75692c9949596833adc9', 5, 15, 3, 3, 2, 3, NULL),
+(4, 'admin', 'admin', 'admin2@admin.fr', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1, NULL, 1, NULL, NULL, NULL, NULL),
+(5, 'admin', 'admin', 'admin3@admin.fr', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1, NULL, 1, NULL, NULL, NULL, NULL),
+(6, 'chef', 'chef', 'chef2@chef.fr', 'd5f2e5c77054c44c2c72a1b017deca06fc637c99', 1, NULL, 2, NULL, NULL, NULL, NULL),
+(7, 'user', 'user', 'user2@user.fr', '12dea96fec20593566ab75692c9949596833adc9', 1, NULL, 3, NULL, NULL, 1, NULL),
+(8, 'user', 'user', 'user3@user.fr', '12dea96fec20593566ab75692c9949596833adc9', 1, NULL, 3, NULL, NULL, NULL, NULL),
+(9, 'user', 'user', 'user4@user.fr', '12dea96fec20593566ab75692c9949596833adc9', 1, NULL, 3, NULL, NULL, NULL, NULL),
+(10, 'user', 'user', 'user5@user.fr', '12dea96fec20593566ab75692c9949596833adc9', 1, NULL, 3, NULL, NULL, NULL, NULL),
+(11, 'user', 'user', 'user6@user.fr', '12dea96fec20593566ab75692c9949596833adc9', 1, NULL, 3, NULL, NULL, NULL, NULL),
+(12, 'user', 'user', 'user7@user.fr', '12dea96fec20593566ab75692c9949596833adc9', 1, NULL, 3, NULL, NULL, NULL, NULL),
+(13, 'user', 'user', 'user8@user.fr', '12dea96fec20593566ab75692c9949596833adc9', 1, NULL, 3, NULL, NULL, NULL, NULL),
+(14, 'user', 'user', 'user9@user.fr', '12dea96fec20593566ab75692c9949596833adc9', 1, NULL, 3, NULL, NULL, NULL, NULL),
+(15, 'user', 'user', 'user10@user.fr', '12dea96fec20593566ab75692c9949596833adc9', 1, NULL, 3, NULL, NULL, NULL, NULL),
+(16, 'admin', 'admin', 'admin4@admin.fr', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1, NULL, 1, NULL, NULL, NULL, NULL),
+(17, 'chef', 'chef', 'chef3@chef.fr', 'd5f2e5c77054c44c2c72a1b017deca06fc637c99', 1, NULL, 2, NULL, NULL, NULL, NULL),
+(18, 'chef', 'chef', 'chef4@chef.fr', 'd5f2e5c77054c44c2c72a1b017deca06fc637c99', 1, NULL, 2, NULL, NULL, NULL, NULL),
+(19, 'chef', 'chef', 'chef5@chef.fr', 'd5f2e5c77054c44c2c72a1b017deca06fc637c99', 1, NULL, 2, NULL, NULL, NULL, NULL),
+(20, 'chef', 'chef', 'chef6@chef.fr', 'd5f2e5c77054c44c2c72a1b017deca06fc637c99', 1, NULL, 2, NULL, NULL, NULL, NULL),
+(21, 'user', 'user', 'user11@user.fr', '12dea96fec20593566ab75692c9949596833adc9', 1, NULL, 3, NULL, NULL, NULL, NULL),
+(22, 'user', 'user', 'user12@user.fr', '12dea96fec20593566ab75692c9949596833adc9', 1, NULL, 3, NULL, NULL, NULL, NULL),
+(23, 'houri', 'aby', 'aby@gmail.com', '5f50a84c1fa3bcff146405017f36aec1a10a9e38', 15, 60, 3, 33, 1, NULL, NULL),
+(24, 'TestN', 'TestN', 'TestN@TestN.fr', '25e39974ebb33750d7954e64e685e97df9311521', 15, 5000, 3, 36, 2, NULL, NULL),
+(26, 'TestNA', 'TestNA', 'TestNA@mail.fr', '996af2c1b813481d638c7ef6836fb40a1dbcbb51', 15, 5000, 3, 38, 2, NULL, NULL),
+(27, 'TestNE', 'TestNE', 'TestNE@mail.fr', '7679a1bb23c2867cab0c5b253a1edd77ce6536a3', 15, 5000, 3, 39, 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -129,6 +219,19 @@ CREATE TABLE IF NOT EXISTS `situer` (
   PRIMARY KEY (`id_f`,`id_a`),
   KEY `FK_situer_id_a` (`id_a`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `situer`
+--
+
+INSERT INTO `situer` (`id_f`, `id_a`) VALUES
+(6, 27),
+(7, 28),
+(8, 29),
+(9, 30),
+(10, 32),
+(11, 34),
+(12, 35);
 
 -- --------------------------------------------------------
 
@@ -145,6 +248,29 @@ CREATE TABLE IF NOT EXISTS `suivre` (
   KEY `FK_suivre_id_f` (`id_f`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+--
+-- Déchargement des données de la table `suivre`
+--
+
+INSERT INTO `suivre` (`etat`, `id_s`, `id_f`) VALUES
+('En attente', 2, 1),
+('En attente', 2, 6),
+('En attente', 2, 7),
+('En attente', 2, 8),
+('En attente', 2, 9),
+('En attente', 2, 11),
+('En attente', 2, 12),
+('Validé', 3, 1),
+('Validé', 3, 3),
+('Refusé', 3, 6),
+('Refusé', 3, 7),
+('Refusé', 3, 8),
+('Validé', 3, 9),
+('Validé', 3, 10),
+('Refusé', 3, 11),
+('Refusé', 3, 12),
+('Validé', 7, 3);
+
 -- --------------------------------------------------------
 
 --
@@ -158,7 +284,20 @@ CREATE TABLE IF NOT EXISTS `type_formation` (
   `id_f` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_t`),
   KEY `FK_type_formation_id_f` (`id_f`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `type_formation`
+--
+
+INSERT INTO `type_formation` (`id_t`, `nom_type`, `id_f`) VALUES
+(1, 'Alternance', 6),
+(2, 'Initiale', 7),
+(3, 'Initiale', 8),
+(4, 'Alternance', 9),
+(5, 'Initiale', 10),
+(6, 'Alternance', 11),
+(7, 'Alternance', 12);
 
 --
 -- Contraintes pour les tables déchargées

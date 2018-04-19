@@ -2,7 +2,14 @@
 session_start();
 require "Models/connect.php";
 
-define('BASE_URL',dirname($_SERVER['SCRIPT_NAME']));
+$protocol = empty($_SERVER['HTTPS']) ? 'http' : 'https';
+        $domain = $_SERVER['SERVER_NAME']; $port = $_SERVER['SERVER_PORT']; $request = $_SERVER['REQUEST_URI'];
+        $port = ($protocol == 'http' && $port == 80 || $protocol == 'https' && $port == 443) ? '' : ":$port";
+        $url = dirname(dirname($_SERVER['SCRIPT_NAME']));
+        $url = $protocol . "://" . $domain . $port . $url ;
+        $url=SUBSTR($url,0,-1);
+
+define('BASE_URL',($url));
 if(!isset($_SESSION['auth']))
 {
     if(!isset($_SESSION['i']))

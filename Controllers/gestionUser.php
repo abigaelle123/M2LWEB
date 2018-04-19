@@ -98,8 +98,10 @@
                     addUserPourChef();
                     $referent = 'Chef d\'equipe';
                     $_GET['p'] = 'chef';
-                    header("Location:".BASE_URL."/gestionUser");                    
+                    header("Location:".BASE_URL."/gestionUser");
                 }
+
+
 
             $header="MIME-Version: 1.0\r\n";
             $header.='From:"M2L-Formation.com"<support@m2lformation.com>'."\n";

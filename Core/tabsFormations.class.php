@@ -78,6 +78,7 @@ class tabsFormations
                                 <th>Plus d\'info</th>
                                 <th>Suivre</th>
                                 <th>Fiche</th>
+                                <th>Note</th>
                               </tr>
                             </thead>';
                         if (isset($formtype))
@@ -98,8 +99,12 @@ class tabsFormations
                                 <td>
 
                                 </td>
+                                <td>
+                                    <a href="' . BASE_URL . '/notecontroller">Noter la formation</a>
+                                </td>
                             </form>';
                             $tab.='
+                            
 
                             <tr>
                                <td>' . $value["libelle"] . '</td>

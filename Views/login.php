@@ -4,7 +4,7 @@
 	<title>Login</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="icon" type="image/png" href="<?= BASE_URL; ?>/Views/images/icons/favicon.ico"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= BASE_URL; ?>/Views/vendor/bootstrap/css/bootstrap.min.css">
@@ -12,7 +12,7 @@
 	<link rel="stylesheet" type="text/css" href="<?= BASE_URL; ?>/Views/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= BASE_URL; ?>/Views/vendor/animate/animate.css">
-<!--===============================================================================================-->	
+<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= BASE_URL; ?>/Views/vendor/css-hamburgers/hamburgers.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= BASE_URL; ?>/Views/vendor/select2/select2.min.css">
@@ -22,7 +22,7 @@
 <!--===============================================================================================-->
 </head>
 <body>
-	
+
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
@@ -54,7 +54,7 @@
                       <div class="form-group">
                         <input type="checkbox" name="remember"> Se souvenir de moi
                       </div>
-					
+
 					<div class="container-login100-form-btn">
 						<button type="submit" name="submit" class="login100-form-btn">
 							Login
@@ -65,7 +65,7 @@
 						<span class="txt1">
 							Forgot
 						</span>
-						<a class="txt2" href="#">
+						<a class="txt2" href="Views/oublimdp.php">
 							Username / Password?
 						</a>
 					</div>
@@ -73,11 +73,11 @@
 			</div>
 		</div>
 	</div>
-	
-	
 
-	
-<!--===============================================================================================-->	
+
+
+
+<!--===============================================================================================-->
 	<script src="<?= BASE_URL; ?>/Views/vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
 	<script src="<?= BASE_URL; ?>/Views/vendor/bootstrap/js/popper.js"></script>
@@ -93,5 +93,3 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="<?= BASE_URL; ?>/Views/js/main.js"></script>
-
-

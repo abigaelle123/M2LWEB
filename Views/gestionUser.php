@@ -60,7 +60,7 @@
                     ';
                             }
                             ?>
-                            
+
                         </div>
                         <div class="box-footer">
                         <button type="submit" name="valider" class="btn btn-primary pull-right">Valider</button>
@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 </div>
-              
+
 
                <div class="tab-pane active" id="tab_2-2">
                 <div class="table-responsive no-padding">
@@ -77,7 +77,7 @@
                   <?php
                 if($_SESSION['auth']['level']== 2)
                     {
-                      echo'                  
+                      echo'
                       <thead>
                   <tr>
                   <th>Nom</th>
@@ -166,9 +166,10 @@
                                 </tbody>';
                     }
                     }
+
                 ?>
                 </table>
                  </div>
                 </div>
+
  </div>
-   

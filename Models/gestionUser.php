@@ -95,3 +95,14 @@ function getUserAdmin()
         return $data;
     }
 }
+
+
+function nbUser()
+{
+  global $bdd;
+  $req = $bdd->prepare("SELECT COUNT(*) FROM salarie WHERE salarie.id_s_1=:id");
+  $req->bindValue(':id',$id,PDO::PARAM_INT);
+  $req->execute();
+  return $requete->fetch();
+
+}

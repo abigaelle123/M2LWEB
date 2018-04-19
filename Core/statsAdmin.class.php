@@ -28,7 +28,7 @@ class statsAdmin
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
-                            <h4 class="modal-title">Liste des administrateurs</h4>
+                            <h4 class="modal-title">Nombre d\'inscrits</h4>
                           </div>
                           <div class="modal-body">
                              <table class="table table-hover">

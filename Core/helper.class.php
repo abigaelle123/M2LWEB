@@ -2,26 +2,31 @@
 
 class helper
 {        
-    public static function menu ($link, $name)
+    public static function menu ($icon, $link, $name)
     {
-        $nav = '<li><a href="' . BASE_URL . '/'.$link.'"></i><span>'.$name.'</span></a></li>';
+		$navigation = '<li class="nav-item">
+            <a href="' . BASE_URL . '/'.$link.'" class="nav-link">
+              <i class="nav-icon fa fa-'.$icon.'"></i>
+              <p>
+                '.$name.'
+              </p>
+            </a>
+          </li>'; 
+		
+		return $navigation; 
+		//                <span class="badge badge-info right"></span>
 
-        return $nav;
     }
     
     //credit et nombre de jours
-    public static function dropdown ($icon, $label, $data, $name)
+   public static function dropdown ($icon, $data, $comp)
     {
-        $notification = '<li class="dropdown notifications-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <i class="'.$icon.'"></i>
-                            <span class="label label-'.$label.'">'.$data.'</span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li class="header">Vous disposez de '.$data.' '.$name.'</li>
-                        </ul>
-                    </li>';
+        $alert = '<a href="#" class="dropdown-item">
+            				<i class="fa fa-'.$icon.'"></i> Vous disposez de '.$data.' '.$comp.'
+            				<span class="float-right text-muted text-sm"></span>
+          				 </a>
+						 <div class="dropdown-divider"></div>';
 
-        return $notification;
+        return $alert;
     }
 }

@@ -1,145 +1,262 @@
 <?php include 'Core/helper.class.php'; ?>
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>M2L | WEB</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="<?= BASE_URL; ?>/Views/plugins/font-awesome/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="<?= BASE_URL; ?>/Views/dist/css/adminlte.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="<?= BASE_URL; ?>/Views/plugins/iCheck/flat/blue.css">
+  <!-- Morris chart -->
+  <link rel="stylesheet" href="<?= BASE_URL; ?>/Views/plugins/morris/morris.css">
+  <!-- jvectormap -->
+  <link rel="stylesheet" href="<?= BASE_URL; ?>/Views/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
+  <!-- Date Picker -->
+  <link rel="stylesheet" href="<?= BASE_URL; ?>/Views/plugins/datepicker/datepicker3.css">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="<?= BASE_URL; ?>/Views/plugins/daterangepicker/daterangepicker-bs3.css">
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="<?= BASE_URL; ?>/Views/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition sidebar-mini">
+<div class="wrapper">
 
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-         <!-- Ionicons -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
-
-        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css"/>
-
-
-
-    </head>
-    <body>
-
-        <div class="wrapper">
-    <header class="main-header">
-
-        <!-- Logo -->
-        <a href="" class="logo">
-            <!-- logo for regular state and mobile devices -->
-            <?php
-            if($_SESSION['auth']['level']== 1)
-            {
-                echo('<span class="logo-lg"><b>ADMIN</b>M2L</span>');
-            }
-            elseif ($_SESSION['auth']['level'] == 2)
-            {
-                echo('<span class="logo-lg"><b>CHEF</b>M2L</span>');
-            }
-            else
-            {
-                echo('<span class="logo-lg"><b>UTILISATEUR</b>M2L</span>');
-            }
-            echo('<span class="logo-mini">M2L</span>');
-            ?>
-        </a>
-        <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-             <a class="navbar-brand" href="<?= BASE_URL; ?>/profil">
-                            <img src="http://www.africabeauties.net/img/team/team-member.jpg" width="50px" height="50px" class="user-image" alt="User Image">
-                            <span class="hidden-xs">Profil</span>
-                        </a>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+  <!-- Navbar -->
+  <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
+    <!-- Left navbar links -->
+    <ul class="navbar-nav">
       <li class="nav-item">
-           <?php
-                    echo helper::dropdown('fa fa-btc','success',$_SESSION['auth']['credits'],'Crédits');
-                    echo helper::dropdown('fa fa-calendar','danger',$_SESSION['auth']['NbJour'],'Jours de formation');
-                    ?>
-                    <?php
-                    if($_SESSION['auth']['level']== 1 || $_SESSION['auth']['level']== 2)
-                    {
-                        if ($_SESSION['auth']['level'] == 1)
-                        {
-                            echo helper::menu('admin','Accueil','fa fa-home');
-                        }
-                        elseif ($_SESSION['auth']['level'] == 2)
-                        {
-                            echo helper::menu('chef','Accueil','fa fa-home');
-                        }
-                        echo helper::menu('gestionUser','Gestion utilisateurs','fa fa-user-plus');
-                        echo helper::menu('gestionPresta','Ajouter un Prestataire', 'fa fa-user-plus');
-                        echo helper::menu('gestionFormation','Ajouter une Formation','glyphicon glyphicon-plus');
-                    }
-                    else
-                    {
-                        echo helper::menu('accueil','Accueil','fa fa-home');
-                    }
-                    echo helper::menu('calendar','Calendrier', 'fa fa-calendar');
-                    echo '<li class="header">GESTION DU COMPTE</li>';
-                    echo helper::menu('disconnect','Déconnexion','glyphicon glyphicon-log-out');
-                    ?>
+        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
       </li>
     </ul>
 
-  </div>
-</nav>
-    </header>
-    <!-- Left side column. contains the logo and sidebar -->
-    <aside class="main-sidebar">
-        <!-- sidebar: style can be found in sidebar.less -->
-        <section class="sidebar">
-
-            <!-- sidebar menu: : style can be found in sidebar.less -->
-
-        </section>
-        <!-- /.sidebar -->
-    </aside>
-
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>
-                <hr>
-            </h1>
-        </section>
-        <section class="content">
-        <?= $content; ?>
-        </section>
-    </div>
-
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <!-- Messages Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="fa fa-comments-o"></i>
+          <span class="badge badge-danger navbar-badge">3</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  Brad Diesel
+                  <span class="float-right text-sm text-danger"><i class="fa fa-star"></i></span>
+                </h3>
+                <p class="text-sm">Call me whenever you can...</p>
+                <p class="text-sm text-muted"><i class="fa fa-clock-o mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="dist/img/user8-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  John Pierce
+                  <span class="float-right text-sm text-muted"><i class="fa fa-star"></i></span>
+                </h3>
+                <p class="text-sm">I got your message bro</p>
+                <p class="text-sm text-muted"><i class="fa fa-clock-o mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item">
+            <!-- Message Start -->
+            <div class="media">
+              <img src="dist/img/user3-128x128.jpg" alt="User Avatar" class="img-size-50 img-circle mr-3">
+              <div class="media-body">
+                <h3 class="dropdown-item-title">
+                  Nora Silvester
+                  <span class="float-right text-sm text-warning"><i class="fa fa-star"></i></span>
+                </h3>
+                <p class="text-sm">The subject goes here</p>
+                <p class="text-sm text-muted"><i class="fa fa-clock-o mr-1"></i> 4 Hours Ago</p>
+              </div>
+            </div>
+            <!-- Message End -->
+          </a>
+          <div class="dropdown-divider"></div>
+          <a href="#" class="dropdown-item dropdown-footer">See All Messages</a>
         </div>
+      </li>
+      <!-- Notifications Dropdown Menu -->
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="fa fa-bell-o"></i>
+          <span class="badge badge-warning navbar-badge">15</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <span class="dropdown-item dropdown-header">INFORMATIONS</span>
+          <div class="dropdown-divider"></div>
+         	<?php echo     helper::dropdown('btc',$_SESSION['auth']['credits'],'Crédits');
+			
+                  echo  helper::dropdown('calendar',$_SESSION['auth']['NbJour'],'Jours de formation');
+			?>
+		  </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#"><i
+            class="fa fa-th-large"></i></a>
+      </li>
+    </ul>
+  </nav>
+  <!-- /.navbar -->
 
-    </body>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<script>c
-function myFunction() {
-  var input, filter, table, tr, td, i;
-  input = document.getElementById("#myInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
-</script>
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="index3.html" class="brand-link">
+      <img src="<?= BASE_URL; ?>/Views/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light">AdminLTE 3</span>
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="<?= BASE_URL; ?>/Views/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">Alexander Pierce</a>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">  
+			<?php 
+			if($_SESSION['auth']['level']== 1 || $_SESSION['auth']['level']== 2)
+                    {
+                        if ($_SESSION['auth']['level'] == 1)
+                        {
+                            echo helper::menu('home','admin','Accueil');
+                        }
+                        elseif ($_SESSION['auth']['level'] == 2)
+                        {
+                            echo helper::menu('home','chef','Accueil');
+                        }
+                        echo helper::menu('user-plus','gestionUser','Gestion utilisateurs');
+                        echo helper::menu('user-plus','gestionPresta','Ajouter un Prestataire');
+                        echo helper::menu('user-plus','gestionFormation','Ajouter une Formation');
+                    }
+                    else
+                    {
+                      echo helper::menu('dashboard', 'accueil', 'Accueil');
+                    }
+                    echo helper::menu('calendar','calendar','Calendrier');
+                    echo '<li class="header">GESTION DU COMPTE</li>';
+                    echo helper::menu('sign-out','disconnect','Déconnexion');
+                    ?>
+		  
+     	
+     	
+         
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0 text-dark">Dashboard</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item active">Dashboard v2</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <!-- /.content-header -->
+
+    <!-- Main content -->
+    <section class="content">
+     <?= $content;  ?>
+  
+	  </section>
+        
+      </div>
+    
+  <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <strong>Copyright &copy; 2017-2018 <a href="http://adminlte.io">M2LWEB</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Réalisé par </b> Sembres Chloes, Stefanovic Marko, Houri Abigael
+    </div>
+  </footer>
+  <aside class="control-sidebar control-sidebar-dark">
+  </aside>
+</div>
+
+<!-- jQuery -->
+<script src="<?= BASE_URL; ?>/Views/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
-$(document).ready(function(Offer){
-    $('#datatable').DataTable();
-});
+  $.widget.bridge('uibutton', $.ui.button)
 </script>
-
+<!-- Bootstrap 4 -->
+<script src="<?= BASE_URL; ?>/Views/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Morris.js charts -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="<?= BASE_URL; ?>/Views/plugins/morris/morris.min.js"></script>
+<!-- Sparkline -->
+<script src="<?= BASE_URL; ?>/Views/plugins/sparkline/jquery.sparkline.min.js"></script>
+<!-- jvectormap -->
+<script src="<?= BASE_URL; ?>/Views/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="<?= BASE_URL; ?>/Views/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="<?= BASE_URL; ?>/Views/plugins/knob/jquery.knob.js"></script>
+<!-- daterangepicker -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+<script src="<?= BASE_URL; ?>/Views/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- datepicker -->
+<script src="<?= BASE_URL; ?>/Views/plugins/datepicker/bootstrap-datepicker.js"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="<?= BASE_URL; ?>/Views/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<!-- Slimscroll -->
+<script src="<?= BASE_URL; ?>/Views/plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="<?= BASE_URL; ?>/Views/plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="<?= BASE_URL; ?>/Views/dist/js/adminlte.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="<?= BASE_URL; ?>/Views/dist/js/pages/dashboard.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="<?= BASE_URL; ?>/Views/dist/js/demo.js"></script>
+</body>
 </html>

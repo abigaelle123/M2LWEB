@@ -1,10 +1,9 @@
 options +FollowSymLinks
-RewriteEngine On
-RewriteBase /
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule ^([a-zA-Z0-9]*)$ index.php?p=$1 [QSA]
-RewriteRule ^([a-zA-Z0-9]*)\/([0-9]{1-4})$ index.php?p=$1&id=$2 [QSA,L]
+RewriteRule ^([\~a-zA-Z0-9]*)\/?$ /~csembres/index.php?p=$1 [QSA,L]
+RewriteRule ^([a-zA-Z0-9]*)\/([0-9]{1,4})\/?$ /~csembres/index.php?p=$1&id=$2 [QSA,L]
+RewriteRule ^([a-zA-Z0-9]*)\/([0-9]{1,4})\/([a-zA-Z]*)?$ /~csembres/index.php?p=$1&id=$2&action=$3 [QSA,L]
 
-ErrorDocument 404 /localM2L/index.php?p=404
+ErrorDocument 404 /~csembres/index.php?p=404

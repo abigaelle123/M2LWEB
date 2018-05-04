@@ -7,7 +7,7 @@ $protocol = empty($_SERVER['HTTPS']) ? 'http' : 'https';
         $port = ($protocol == 'http' && $port == 80 || $protocol == 'https' && $port == 443) ? '' : ":$port";
         $url = dirname(dirname($_SERVER['SCRIPT_NAME']));
         $url = $protocol . "://" . $domain . $port . $url ;
-        $url=SUBSTR($url,0,-1);
+        $url=SUBSTR($url,0, -1).SUBSTR($request, 0, -1);
 
 define('BASE_URL',($url));
 if(!isset($_SESSION['auth']))

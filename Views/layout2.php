@@ -141,9 +141,22 @@
         <div class="image">
           <img src="<?= BASE_URL; ?>/Views/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
-        <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
-        </div>
+		  <?php
+		  	if($_SESSION['auth']['level'] == 1){
+				echo '<div class="info">
+          <a href="#" class="d-block">Admin</a>
+        </div>'; 
+				
+			}elseif($_SESSION['auth']['level'] == 2){
+				echo '<div class="info">
+          <a href="#" class="d-block">Chef</a>
+        </div>'; 
+			}else{
+				echo '<div class="info">
+          <a href="#" class="d-block">Utilisateur</a>
+        </div>'; 
+			}
+		  ?>
       </div>
 
       <!-- Sidebar Menu -->

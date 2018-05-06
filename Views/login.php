@@ -1,95 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<title>Login</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="<?= BASE_URL; ?>/Views/images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<?= BASE_URL; ?>/Views/vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<?= BASE_URL; ?>/Views/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<?= BASE_URL; ?>/Views/vendor/animate/animate.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<?= BASE_URL; ?>/Views/vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<?= BASE_URL; ?>/Views/vendor/select2/select2.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="<?= BASE_URL; ?>/Views/css/util.css">
-	<link rel="stylesheet" type="text/css" href="<?= BASE_URL; ?>/Views/css/main.css">
-<!--===============================================================================================-->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>M2L WEB | Connexion</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="<?= BASE_URL; ?>/Views/dist/css/adminlte.min.css">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="<?= BASE_URL; ?>/Views/plugins/iCheck/square/blue.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
-<body>
+<body class="hold-transition login-page">
+<div class="login-box">
+  <div class="login-logo">
+   <b>Bienvenue</b> au M2L WEB
+  </div>
+  <!-- /.login-logo -->
+  <div class="card">
+    <div class="card-body login-card-body">
+      <p class="login-box-msg">Connectez vous au site M2L</p>
 
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100">
-				<div class="login100-pic js-tilt" data-tilt>
-					<img src="<?= BASE_URL; ?>/Views/images/img-01.png" alt="IMG">
-				</div>
-                <form role="form" action="#" method="post" class="login100-form validate-form login-form">
+      <form action="#" method="post">
+        <div class="form-group has-feedback">
+          <input type="email" class="form-control" name="mail" placeholder="Email">
+          <span class="fa fa-envelope form-control-feedback"></span>
+			
+        </div>
+        <div class="form-group has-feedback">
+          <input type="password" class="form-control" name="mdp" placeholder="Password">
+          <span class="fa fa-lock form-control-feedback"></span>
+        </div>
+        <div class="row">
+          <div class="col-8">
+            <div class="checkbox icheck">
+              <label>
+                <input type="checkbox" name="remember"> Remember Me
+              </label>
+            </div>
+          </div>
+          <!-- /.col -->
+          <div class="col-4">
+            <button type="submit" name="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          </div>
+          <!-- /.col -->
+        </div>
+      </form>
 
-				<form >
-					<span class="login100-form-title">
-						Espace Connexion
-					</span>
+     
+      <p class="mb-1">
+        <a href="#">I forgot my password</a>
+      </p>
+ 
+    </div>
+    <!-- /.login-card-body -->
+  </div>
+</div>
+<!-- /.login-box -->
 
-					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-						<input class="input100" type="text" name="mail" placeholder="Email">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-envelope" aria-hidden="true"></i>
-						</span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate = "Password is required">
-						<input class="input100" type="password" name="mdp" placeholder="Password">
-						<span class="focus-input100"></span>
-						<span class="symbol-input100">
-							<i class="fa fa-lock" aria-hidden="true"></i>
-						</span>
-					</div>
-                      <div class="form-group">
-                        <input type="checkbox" name="remember"> Se souvenir de moi
-                      </div>
-
-					<div class="container-login100-form-btn">
-						<button type="submit" name="submit" class="login100-form-btn">
-							Login
-						</button>
-					</div>
-
-					<div class="text-center p-t-12">
-						<span class="txt1">
-							Forgot
-						</span>
-						<a class="txt2" href="Views/oublimdp.php">
-							Username / Password?
-						</a>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
-
-
-
-
-<!--===============================================================================================-->
-	<script src="<?= BASE_URL; ?>/Views/vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="<?= BASE_URL; ?>/Views/vendor/bootstrap/js/popper.js"></script>
-	<script src="<?= BASE_URL; ?>/Views/vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="<?= BASE_URL; ?>/Views/vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="<?= BASE_URL; ?>/Views/vendor/tilt/tilt.jquery.min.js"></script>
-	<script >
-		$('.js-tilt').tilt({
-			scale: 1.1
-		})
-	</script>
-<!--===============================================================================================-->
-	<script src="<?= BASE_URL; ?>/Views/js/main.js"></script>
+<!-- jQuery -->
+<script src="<?= BASE_URL; ?>/Views/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="<?= BASE_URL; ?>/Views/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- iCheck -->
+<script src="<?= BASE_URL; ?>/Views/plugins/iCheck/icheck.min.js"></script>
+<script>
+  $(function () {
+    $('input').iCheck({
+      checkboxClass: 'icheckbox_square-blue',
+      radioClass   : 'iradio_square-blue',
+      increaseArea : '20%' // optional
+    })
+  })
+</script>
+</body>
+</html>

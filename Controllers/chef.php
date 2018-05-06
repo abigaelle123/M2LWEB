@@ -6,12 +6,16 @@ if($_SESSION['auth']['level']== 2)
     require "Models/chef.php";
     require "Models/accueil.php";
 
+  
     $id_s= $_SESSION['auth']['id_s'];
-	  $nbUser = getNbUser($id_s);
-	  $user = getUser($id_s);
+	$nbUser = getNbUser($id_s);
+	$user = getUser($id_s);
     $Form = getAllFormation($id_s);
     $FormAtt = getFormationAttente($id_s);
     $FormHisto = getHistorique($id_s);
+	$nbDmd = getNbDmd($id_s);
+    $Dmd = getDmd($id_s);
+
     
 
     $nbDmd = getNbDmd($id_s);

@@ -31,7 +31,7 @@ class tabsFormations
                                     }
                                     $tab .= '<tr>
                                     <td>' . $value["libelle"] . '</td>
-                                    <td>' . date('d-m-Y', strtotime($value['date_d'])) . ' - ' . date('d-m-Y', strtotime($value['date_f'])) .'</td>
+                                    <td>' . $value['date_d'] . ' - ' . $value['date_f'] . '</td>
                                     <td>' . $value['NbJour'] . ' Jour(s)</td>
                                     <td>' . $value['credits'] . ' credit(s)</td>
                                     <td>
@@ -44,11 +44,11 @@ class tabsFormations
                                                         <h4 class="modal-title">' . $value['libelle'] . '</h4>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <h4 class="modalContent">Le : ' . date('d-m-Y', strtotime($value['date_d'])) . ' - ' . date('d-m-Y', strtotime($value['date_f'])) . '</h4>
+                                                        <h4 class="modalContent">Le : ' . $value['date_d'] . ' - ' . $value['date_f'] . '</h4>
                                                         <h4 class="modalContent">Durée : ' . $value['NbJour'] . ' Jour(s)</h4>
                                                         <h4 class="modalContent">Coût : ' . $value['credits'] . ' Crédit(s)</h4>
                                                         <h4 class="modalContent">Adresse : ' . $value['numero'] . ' ' . $value['rue'] . ' ' . $value['commune'] . ' ' . $value['code_postale'] . '</h4>
-                                                        <h4 class="modalContent">Description:  ' . $value['contenu'] . '</h4>
+                                                        <h4 class="modalContent">Description:' . $value['contenu'] . '</h4>
                                                     </div>
                                                 </div>
                                             </div>
@@ -68,7 +68,7 @@ class tabsFormations
     {
         $tab = '<div class="tab-pane active" id="tab_'.$idtab.'">
                     <div class="table-responsive no-padding">
-                        <table id="datatable" id="'.$idtype.'" class="table table-hover">
+                        <table id="'.$idtype.'" class="table table-hover">
                             <thead>
                               <tr>
                                 <th id="Formations">Formations</th>
@@ -78,7 +78,6 @@ class tabsFormations
                                 <th>Plus d\'info</th>
                                 <th>Suivre</th>
                                 <th>Fiche</th>
-                                <th>Note</th>
                               </tr>
                             </thead>';
                         if (isset($formtype))
@@ -97,18 +96,16 @@ class tabsFormations
                                 <form method="post" action="' . BASE_URL . '/fiche">
                                 <input name="idForm" type="hidden" value="' . $value['id_f'] . '" >
                                 <td>
-
-                                </td>
-                                <td>
-                                    <a href="' . BASE_URL . '/notecontroller">Noter la formation</a>
+                                    <button type="submit" class="btn btn-xs" name="Export" >
+                                        <span><i class="fa fa-file-o"></i></span>
+                                    </button>
                                 </td>
                             </form>';
                             $tab.='
-                            
-
+                        
                             <tr>
                                <td>' . $value["libelle"] . '</td>
-                               <td>' . date('d-m-Y', strtotime($value['date_d'])) . ' - ' . date('d-m-Y', strtotime($value['date_f'])) . '</td>
+                               <td>' . $value['date_d'] . ' - ' . $value['date_f'] . '</td>
                                <td>' . $value['NbJour'] . ' Jour(s)</td>
                                <td>' . $value['credits'] . ' credit(s)</td>
                                <td>
@@ -121,14 +118,13 @@ class tabsFormations
                                                 <h4 class="modal-title">' . $value['libelle'] . '</h4>
                                             </div>
                                             <div class="modal-body">
-                                                <h4 class="modalContent">du : '.date('d-m-Y', strtotime($value['date_d'])) . ' au ' . date('d-m-Y', strtotime($value['date_f'])).'</h4>
+                                                <h4 class="modalContent">Le : ' . $value['date_d'] . ' - ' . $value['date_f'] . '</h4>
                                                 <h4 class="modalContent">Durée : ' . $value['NbJour'] . ' Jour(s)</h4>
                                                 <h4 class="modalContent">Coût : ' . $value['credits'] . ' Crédit(s)</h4>
                                                 <h4 class="modalContent">Adresse : ' . $value['numero'] . ' ' . $value['rue'] . ' ' . $value['commune'] . ' ' . $value['code_postale'] . '</h4>
                                                 <h4 class="modalContent">Description:' . $value['contenu'] . '</h4>
-
                                             </div>
-                                        </div>
+                                        </div> 
                                     </div>
                                 </div>
                                </td>
@@ -163,7 +159,7 @@ class tabsFormations
                             {
                                 $tab .= '<tr>
                                            <td>'.$value["libelle"].'</td>
-                                           <td>'. date('d-m-Y', strtotime($value['date_d'])) . ' - ' . date('d-m-Y', strtotime($value['date_f'])) .'</td>
+                                           <td>'.$value['date_d'].' - '.$value['date_f'].'</td>
                                            <td>'.$value['NbJour'].' Jour(s)</td>
                                            <td>'.$value['credits'].' Crédit(s)</td>
                                            <td>
@@ -176,13 +172,13 @@ class tabsFormations
                                                             <h4 class="modal-title">'.$value['libelle'].'</h4>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <h4 class="modalContent">Le : '. date('d-m-Y', strtotime($value['date_d'])) . ' - ' . date('d-m-Y', strtotime($value['date_f'])) .'</h4>
+                                                            <h4 class="modalContent">Le : '.$value['date_d'].' - '.$value['date_f'].'</h4>
                                                             <h4 class="modalContent">Durée : '.$value['NbJour'].' Jour(s)</h4>
                                                             <h4 class="modalContent">Coût : '.$value['credits'].' Crédit(s)</h4>
                                                             <h4 class="modalContent">Adresse : '.$value['numero'].' '.$value['rue'].' '.$value['commune'].' '.$value['code_postale'].'</h4>
-                                                            <h4 class="modalContent">Description:'.$value['contenu'].'</h4>
+                                                            <h4 class="modalContent">Description:'.$value['contenu'].'</h4>  
                                                         </div>
-                                                    </div>
+                                                    </div> 
                                                 </div>
                                             </div>
                                            </td>
@@ -191,7 +187,7 @@ class tabsFormations
                             }
                         }
                         $tab .= '</table>
-                    </div>
+                    </div> 
                 </div>';
         return $tab;
     }

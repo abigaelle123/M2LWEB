@@ -2,7 +2,7 @@
 
 class statsAdmin
 {
-    public static function stats ($color, $nb, $title,$type)
+    public static function stats ($color, $nb, $title, $icon,$type)
     {
         $stats = '<div class="col-lg-3 col-md-4 col-sm-4">
                       <div class="small-box bg-'.$color.'">
@@ -11,6 +11,7 @@ class statsAdmin
                           <p>'.$title.'</p>
                         </div>
                         <div class="icon">
+                          <i class="ion ion-'.$icon.'"></i>
                         </div>
                         <a href="#" class="small-box-footer" data-toggle="modal" data-target="#'.$type.'">Voir tous <i class="fa fa-arrow-circle-right"></i></a>
                       </div>
@@ -28,7 +29,7 @@ class statsAdmin
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                               <span aria-hidden="true">&times;</span>
                             </button>
-                            <h4 class="modal-title">Nombre d\'inscrits</h4>
+                            <h4 class="modal-title">Liste des administrateurs</h4>
                           </div>
                           <div class="modal-body">
                              <table class="table table-hover">

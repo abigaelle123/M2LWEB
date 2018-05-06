@@ -1,13 +1,11 @@
 <?php $title = 'Accueil'?>
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <?= statsAdmin::stats("red","$nbAdmin","Administrateurs","admin") ?>
-            <?= statsAdmin::stats("green","$nbChef","Chefs de formations","chef") ?>
-            <?= statsAdmin::stats("orange","$nbUser","Utilisateurs","user") ?>
-            <?= statsAdmin::stats("purple","$nbPresta","Prestataires","presta") ?>
-            <?= statsAdmin::stats("blue","$nbForm","Formations","form") ?>
-        </div>
+            <?= statsAdmin::stats("red","$nbAdmin","Administrateurs","person-stalker","admin") ?>
+            <?= statsAdmin::stats("green","$nbChef","Chefs de formations","person-stalker","chef") ?>
+            <?= statsAdmin::stats("orange","$nbUser","Utilisateurs","person-stalker","user") ?>
+            <?= statsAdmin::stats("purple","$nbPresta","Prestataires","person-stalker","presta") ?>
+            <?= statsAdmin::stats("blue","$nbForm","Formations","university","form") ?>
 
         <?= statsAdmin::modalList("admin",$listAdmin) ?>
         <?= statsAdmin::modalList("chef",$listChef) ?>
@@ -65,7 +63,7 @@
                 <h4 class="modal-title">Liste des formations</h4>
               </div>
               <div class="modal-body">
-                 <table class="table table-hover">
+                 <table >
                  <thead>
                  <tr>
                  <th>Libelle</th>
@@ -94,7 +92,6 @@
             </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
               </div>
             </div>
             <!-- /.modal-content -->

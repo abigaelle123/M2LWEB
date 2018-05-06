@@ -11,7 +11,7 @@ function getNbUser($id)
 	}
 
 }
-//recupere les données de l'utilisateur
+
 function getUser($id)
 {
 
@@ -25,9 +25,6 @@ function getUser($id)
 	}
 }
 
-    
-//recupere le nombre de demande des utilisateurs
-
 function getNbDmd($id)
 {
 	global $bdd;
@@ -40,7 +37,6 @@ function getNbDmd($id)
 	}
 }
 
-//recupere la demande -> en attente ou pas 
 function getDmd($id)
 {
 	global $bdd;
@@ -53,5 +49,7 @@ from suivre s, formation f,salarie sal where s.etat = 'En attente' and s.id_f = 
 		return $data;
 	}
 }
+
+
 
 ?>

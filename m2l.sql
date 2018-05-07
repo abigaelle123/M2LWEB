@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.7
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 23 mars 2018 à 08:37
--- Version du serveur :  5.7.19
--- Version de PHP :  7.0.23
+-- Hôte : localhost
+-- Généré le :  lun. 07 mai 2018 à 18:15
+-- Version du serveur :  5.6.38
+-- Version de PHP :  7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -28,15 +26,13 @@ SET time_zone = "+00:00";
 -- Structure de la table `adresse`
 --
 
-DROP TABLE IF EXISTS `adresse`;
-CREATE TABLE IF NOT EXISTS `adresse` (
-  `id_a` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `adresse` (
+  `id_a` int(11) NOT NULL,
   `rue` varchar(25) DEFAULT NULL,
   `commune` varchar(25) DEFAULT NULL,
   `code_postale` varchar(25) DEFAULT NULL,
-  `numero` int(3) NOT NULL,
-  PRIMARY KEY (`id_a`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+  `numero` int(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `adresse`
@@ -89,9 +85,8 @@ INSERT INTO `adresse` (`id_a`, `rue`, `commune`, `code_postale`, `numero`) VALUE
 -- Structure de la table `formation`
 --
 
-DROP TABLE IF EXISTS `formation`;
-CREATE TABLE IF NOT EXISTS `formation` (
-  `id_f` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `formation` (
+  `id_f` int(11) NOT NULL,
   `libelle` varchar(25) DEFAULT NULL,
   `contenu` varchar(255) DEFAULT NULL,
   `date_d` date NOT NULL,
@@ -99,11 +94,8 @@ CREATE TABLE IF NOT EXISTS `formation` (
   `NbJour` int(2) DEFAULT NULL,
   `credits` int(4) DEFAULT NULL,
   `id_p` int(11) DEFAULT NULL,
-  `id_a` int(11) NOT NULL,
-  PRIMARY KEY (`id_f`),
-  KEY `FK_formation_id_p` (`id_p`),
-  KEY `FK_formation_id_a` (`id_a`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+  `id_a` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `formation`
@@ -126,17 +118,41 @@ INSERT INTO `formation` (`id_f`, `libelle`, `contenu`, `date_d`, `date_f`, `NbJo
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `messagerie`
+--
+
+CREATE TABLE `messagerie` (
+  `id` int(11) NOT NULL,
+  `expediteur` int(11) NOT NULL,
+  `destinataire` int(11) NOT NULL,
+  `objet` varchar(100) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `texte` text CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `datemsg` int(11) NOT NULL,
+  `lu` enum('0','1') CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `noter`
+--
+
+CREATE TABLE `noter` (
+  `id_s` int(25) NOT NULL,
+  `id_f` int(25) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `prestataire`
 --
 
-DROP TABLE IF EXISTS `prestataire`;
-CREATE TABLE IF NOT EXISTS `prestataire` (
-  `id_p` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `prestataire` (
+  `id_p` int(11) NOT NULL,
   `raison_s` varchar(25) DEFAULT NULL,
-  `id_a` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_p`),
-  KEY `FK_prestataire_id_a` (`id_a`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+  `id_a` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `prestataire`
@@ -155,9 +171,8 @@ INSERT INTO `prestataire` (`id_p`, `raison_s`, `id_a`) VALUES
 -- Structure de la table `salarie`
 --
 
-DROP TABLE IF EXISTS `salarie`;
-CREATE TABLE IF NOT EXISTS `salarie` (
-  `id_s` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `salarie` (
+  `id_s` int(11) NOT NULL,
   `nom` varchar(25) DEFAULT NULL,
   `prenom` varchar(25) DEFAULT NULL,
   `mail` varchar(25) DEFAULT NULL,
@@ -168,11 +183,8 @@ CREATE TABLE IF NOT EXISTS `salarie` (
   `id_a` int(11) DEFAULT NULL,
   `id_s_1` int(11) DEFAULT NULL,
   `erreur` int(11) DEFAULT NULL,
-  `date_fin_password` date DEFAULT NULL,
-  PRIMARY KEY (`id_s`),
-  KEY `FK_salarie_id_a` (`id_a`),
-  KEY `FK_salarie_id_s_1` (`id_s_1`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8;
+  `date_fin_password` date DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `salarie`
@@ -212,12 +224,9 @@ INSERT INTO `salarie` (`id_s`, `nom`, `prenom`, `mail`, `password`, `NbJour`, `c
 -- Structure de la table `situer`
 --
 
-DROP TABLE IF EXISTS `situer`;
-CREATE TABLE IF NOT EXISTS `situer` (
+CREATE TABLE `situer` (
   `id_f` int(11) NOT NULL,
-  `id_a` int(11) NOT NULL,
-  PRIMARY KEY (`id_f`,`id_a`),
-  KEY `FK_situer_id_a` (`id_a`)
+  `id_a` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -239,13 +248,10 @@ INSERT INTO `situer` (`id_f`, `id_a`) VALUES
 -- Structure de la table `suivre`
 --
 
-DROP TABLE IF EXISTS `suivre`;
-CREATE TABLE IF NOT EXISTS `suivre` (
+CREATE TABLE `suivre` (
   `etat` varchar(25) DEFAULT NULL,
   `id_s` int(11) NOT NULL,
-  `id_f` int(11) NOT NULL,
-  PRIMARY KEY (`id_s`,`id_f`),
-  KEY `FK_suivre_id_f` (`id_f`)
+  `id_f` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -261,6 +267,7 @@ INSERT INTO `suivre` (`etat`, `id_s`, `id_f`) VALUES
 ('En attente', 2, 11),
 ('En attente', 2, 12),
 ('Validé', 3, 1),
+('En attente', 3, 2),
 ('Validé', 3, 3),
 ('Refusé', 3, 6),
 ('Refusé', 3, 7),
@@ -277,14 +284,11 @@ INSERT INTO `suivre` (`etat`, `id_s`, `id_f`) VALUES
 -- Structure de la table `type_formation`
 --
 
-DROP TABLE IF EXISTS `type_formation`;
-CREATE TABLE IF NOT EXISTS `type_formation` (
-  `id_t` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `type_formation` (
+  `id_t` int(11) NOT NULL,
   `nom_type` varchar(25) DEFAULT NULL,
-  `id_f` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_t`),
-  KEY `FK_type_formation_id_f` (`id_f`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+  `id_f` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `type_formation`
@@ -300,6 +304,113 @@ INSERT INTO `type_formation` (`id_t`, `nom_type`, `id_f`) VALUES
 (7, 'Alternance', 12);
 
 --
+-- Index pour les tables déchargées
+--
+
+--
+-- Index pour la table `adresse`
+--
+ALTER TABLE `adresse`
+  ADD PRIMARY KEY (`id_a`);
+
+--
+-- Index pour la table `formation`
+--
+ALTER TABLE `formation`
+  ADD PRIMARY KEY (`id_f`),
+  ADD KEY `FK_formation_id_p` (`id_p`),
+  ADD KEY `FK_formation_id_a` (`id_a`);
+
+--
+-- Index pour la table `messagerie`
+--
+ALTER TABLE `messagerie`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Index pour la table `noter`
+--
+ALTER TABLE `noter`
+  ADD UNIQUE KEY `note` (`id_s`),
+  ADD KEY `FK_noter_id_f` (`id_f`);
+
+--
+-- Index pour la table `prestataire`
+--
+ALTER TABLE `prestataire`
+  ADD PRIMARY KEY (`id_p`),
+  ADD KEY `FK_prestataire_id_a` (`id_a`);
+
+--
+-- Index pour la table `salarie`
+--
+ALTER TABLE `salarie`
+  ADD PRIMARY KEY (`id_s`),
+  ADD KEY `FK_salarie_id_a` (`id_a`),
+  ADD KEY `FK_salarie_id_s_1` (`id_s_1`);
+
+--
+-- Index pour la table `situer`
+--
+ALTER TABLE `situer`
+  ADD PRIMARY KEY (`id_f`,`id_a`),
+  ADD KEY `FK_situer_id_a` (`id_a`);
+
+--
+-- Index pour la table `suivre`
+--
+ALTER TABLE `suivre`
+  ADD PRIMARY KEY (`id_s`,`id_f`),
+  ADD KEY `FK_suivre_id_f` (`id_f`);
+
+--
+-- Index pour la table `type_formation`
+--
+ALTER TABLE `type_formation`
+  ADD PRIMARY KEY (`id_t`),
+  ADD KEY `FK_type_formation_id_f` (`id_f`);
+
+--
+-- AUTO_INCREMENT pour les tables déchargées
+--
+
+--
+-- AUTO_INCREMENT pour la table `adresse`
+--
+ALTER TABLE `adresse`
+  MODIFY `id_a` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+
+--
+-- AUTO_INCREMENT pour la table `formation`
+--
+ALTER TABLE `formation`
+  MODIFY `id_f` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT pour la table `messagerie`
+--
+ALTER TABLE `messagerie`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT pour la table `prestataire`
+--
+ALTER TABLE `prestataire`
+  MODIFY `id_p` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT pour la table `salarie`
+--
+ALTER TABLE `salarie`
+  MODIFY `id_s` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+
+--
+-- AUTO_INCREMENT pour la table `type_formation`
+--
+ALTER TABLE `type_formation`
+  MODIFY `id_t` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- Contraintes pour les tables déchargées
 --
 
@@ -309,6 +420,13 @@ INSERT INTO `type_formation` (`id_t`, `nom_type`, `id_f`) VALUES
 ALTER TABLE `formation`
   ADD CONSTRAINT `FK_formation_id_a` FOREIGN KEY (`id_a`) REFERENCES `adresse` (`id_a`),
   ADD CONSTRAINT `FK_formation_id_p` FOREIGN KEY (`id_p`) REFERENCES `prestataire` (`id_p`);
+
+--
+-- Contraintes pour la table `noter`
+--
+ALTER TABLE `noter`
+  ADD CONSTRAINT `FK_noter_id_f` FOREIGN KEY (`id_f`) REFERENCES `formation` (`id_f`),
+  ADD CONSTRAINT `FK_noter_id_s` FOREIGN KEY (`id_s`) REFERENCES `salarie` (`id_s`);
 
 --
 -- Contraintes pour la table `prestataire`
@@ -342,7 +460,6 @@ ALTER TABLE `suivre`
 --
 ALTER TABLE `type_formation`
   ADD CONSTRAINT `FK_type_formation_id_f` FOREIGN KEY (`id_f`) REFERENCES `formation` (`id_f`);
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

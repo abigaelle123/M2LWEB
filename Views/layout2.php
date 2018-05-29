@@ -51,7 +51,7 @@
           <span class="badge badge-danger navbar-badge"></span>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a href="#" class="dropdown-item">
+          <a href="<?= BASE_URL; ?>/profil" class="dropdown-item">
             <!-- Message Start -->
             <div class="media">
               <img src="<?= BASE_URL; ?>/Views/dist/img/user1-128x128.jpg" alt="User Avatar" class="img-size-50 mr-3 img-circle">
@@ -112,16 +112,16 @@
 		  <?php
 		  	if($_SESSION['auth']['level'] == 1){
 				echo '<div class="info">
-          <a href="#" class="d-block">Admin</a>
+          <a href="'.BASE_URL.'/profil" class="d-block">Admin</a>
         </div>'; 
 				
 			}elseif($_SESSION['auth']['level'] == 2){
 				echo '<div class="info">
-          <a href="#" class="d-block">Chef</a>
+          <a href="'.BASE_URL.'/profil" class="d-block">Chef</a>
         </div>'; 
 			}else{
 				echo '<div class="info">
-          <a href="#" class="d-block">Utilisateur</a>
+          <a href="'.BASE_URL.'/profil" class="d-block">Utilisateur</a>
         </div>'; 
 			}
 		  ?>

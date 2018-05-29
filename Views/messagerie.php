@@ -25,6 +25,46 @@
                 <header>
                     <h2>Vos messages</h2> </header>
                 <p>Tout vos messages sont afficher ci-dessous, ouvrez les, peut-être que c'est important !</p>
+                <div>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>E-mail</th>
+                                <th>Titre</th>
+                                <th>Lecture</th>
+                                <th>Supprimer</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>john@example.com</td>
+                                <td>Pataprout</td>
+                                <td>
+                                    <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">Ouvrir</button>
+                                </td>                                
+                                <td>
+                                    <button type="button" class="btn btn-danger btn-xs" >Supprimer</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Modal Header</h4> </div>
+                                <div class="modal-body">
+                                    <p>Some text in the modal.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </div>

@@ -1,6 +1,7 @@
 <?php
 
-function sendMessage($id_s){
+function sendMessage($id_s)
+{
     global $bdd;
         $requete = $bdd->prepare("SELECT id_s FROM salarie WHERE mail = :mail");
         $requete->bindValue(':mail',$_POST['destinataire'],PDO::PARAM_STR);

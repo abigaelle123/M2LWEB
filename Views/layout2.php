@@ -149,7 +149,7 @@
                     {
                       echo helper::menu('dashboard', 'accueil', 'Accueil');
                     }
-                    echo helper::menu('calendar','calendrier','Calendrier');
+                   
                     echo '<li class="header">GESTION DU COMPTE</li>';
                     echo helper::menu('sign-out','disconnect','Déconnexion');
                     ?>
